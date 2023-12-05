@@ -2,7 +2,7 @@ import express from "express";
 import fs from "fs";
 const app = express();
 
-app.get("/", function (req, res) {
+app.get("/", function (_req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
@@ -10,7 +10,6 @@ app.get("/video", function (req, res) {
   const range = req.headers.range;
   if (!range) res.status(400).send("Requires Range header");
 
-  console.log(req.headers);
   const videoPath = "./video/mytest.mp4";
   const videoSize = fs.statSync(videoPath).size;
 
